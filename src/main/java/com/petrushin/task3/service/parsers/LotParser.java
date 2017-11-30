@@ -8,7 +8,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -29,7 +28,6 @@ public class LotParser {
     public List<Lot> parse(String path) {
         JSONParser parser = new JSONParser();
         List<Lot> lots = null;
-
         try {
             Reader reader = new FileReader(path);
             JSONArray array = (JSONArray) parser.parse(reader);
@@ -48,15 +46,18 @@ public class LotParser {
             JSONObject jsonObject = (JSONObject) object;
 
             Object objId = jsonObject.get("id");
-            int id = Integer.valueOf(objId.toString());
+            String idValue = objId.toString();
+            int id = Integer.valueOf(idValue);
 
             Object objPrice = jsonObject.get("price");
-            int price = Integer.valueOf(objPrice.toString());
+            String priceValue = objPrice.toString();
+            int price = Integer.valueOf(priceValue);
 
             Object objLifeTime = jsonObject.get("lifeTime");
             Lot lot;
             if (objLifeTime != null) {
-                int lifeTime = Integer.valueOf(objLifeTime.toString());
+                String lifeTimeValue = objLifeTime.toString();
+                int lifeTime = Integer.valueOf(lifeTimeValue);
                 lot = new Lot(id, price, lifeTime);
             } else {
                 lot = new Lot(id, price);

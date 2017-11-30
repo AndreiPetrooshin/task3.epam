@@ -49,8 +49,8 @@ public class UserParser {
             String userName = objName.toString();
 
             Object objCash = jsonObject.get("cash");
-            String userCash = objCash.toString();
-            int cash = Integer.valueOf(userCash);
+            String userCashValue = objCash.toString();
+            int cash = Integer.valueOf(userCashValue);
 
             User user = new User(cash, userName);
             users.add(user);

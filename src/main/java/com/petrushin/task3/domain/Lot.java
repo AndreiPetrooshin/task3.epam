@@ -6,7 +6,7 @@ public class Lot {
 
     private int id;
     private int price;
-    private int lifeTime = 1;
+    private int lifeTime;
     private State state;
     private Map<User, Integer> userMap;
 

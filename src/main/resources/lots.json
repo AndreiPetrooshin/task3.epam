@@ -6,7 +6,7 @@
   },
   {
     "id":2,
-    "price":200,
+    "price":70,
     "lifeTime" : 3
 
   },
@@ -19,7 +19,7 @@
   {
     "id":4,
     "price":90,
-    "lifeTime" : 2
+    "lifeTime" : 1
 
   }
 

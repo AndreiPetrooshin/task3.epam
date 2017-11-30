@@ -73,7 +73,8 @@ public class LotServiceImpl implements LotService {
             for (Map.Entry<User, Integer> entry : usersMap.entrySet()) {
                 int bet = entry.getValue();
                 User user = entry.getKey();
-                boolean solvency = (user.getCash() - bet) > 0;
+                int userCash = user.getCash();
+                boolean solvency = (userCash - bet) > 0;
                 if (bet > maxBet && solvency) {
                     winner = entry.getKey();
                     maxBet = bet;
