@@ -35,7 +35,6 @@ public class LotServiceImpl implements LotService {
      */
     @Override
     public void tradeLot(Lot lot) {
-
         while (lot.getState() == State.TRADING) {
 
             Set<User> users = lot.getUserSet();
@@ -91,7 +90,6 @@ public class LotServiceImpl implements LotService {
         } finally {
             lock.unlock();
         }
-
     }
 
 }

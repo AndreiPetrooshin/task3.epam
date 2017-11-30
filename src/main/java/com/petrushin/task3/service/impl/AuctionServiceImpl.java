@@ -55,7 +55,6 @@ public class AuctionServiceImpl implements AuctionService {
         }
         lotsStartExecutor.shutdown();
         lotsTerminateExecutor.shutdown();
-
     }
 
 
