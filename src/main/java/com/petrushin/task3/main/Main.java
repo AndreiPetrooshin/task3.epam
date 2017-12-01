@@ -4,6 +4,9 @@ import com.petrushin.task3.domain.*;
 import com.petrushin.task3.service.*;
 import com.petrushin.task3.service.impl.*;
 import com.petrushin.task3.service.parsers.*;
+import com.petrushin.task3.service.parsers.impl.LotParserImpl;
+import com.petrushin.task3.service.parsers.impl.UserParserImpl;
+
 import java.util.List;
 
 public class Main {
@@ -15,8 +18,10 @@ public class Main {
 
         Auction auction = Auction.getInstance();
 
-        List<User> users = new UserParser().parse(PATH_TO_USER_JSON);
-        List<Lot> lots = new LotParser().parse(PATH_TO_LOT_JSON);
+        Parser<User> userParser = new UserParserImpl();
+        Parser<Lot> lotParser = new LotParserImpl();
+        List<User> users = userParser.parse(PATH_TO_USER_JSON);
+        List<Lot> lots = lotParser.parse(PATH_TO_LOT_JSON);
 
         auction.setLots(lots);
         auction.setUsers(users);

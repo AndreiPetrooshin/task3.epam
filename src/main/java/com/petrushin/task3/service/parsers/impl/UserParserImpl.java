@@ -1,6 +1,7 @@
-package com.petrushin.task3.service.parsers;
+package com.petrushin.task3.service.parsers.impl;
 
 import com.petrushin.task3.domain.User;
+import com.petrushin.task3.service.parsers.Parser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONArray;
@@ -14,10 +15,10 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserParser {
+public class UserParserImpl implements Parser<User> {
 
 
-    private static final Logger LOGGER = LogManager.getLogger(UserParser.class);
+    private static final Logger LOGGER = LogManager.getLogger(UserParserImpl.class);
 
     /**
      * Parses the JSON file by Path and

@@ -1,6 +1,7 @@
-package com.petrushin.task3.service.parsers;
+package com.petrushin.task3.service.parsers.impl;
 
 import com.petrushin.task3.domain.Lot;
+import com.petrushin.task3.service.parsers.Parser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONArray;
@@ -14,9 +15,9 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LotParser {
+public class LotParserImpl implements Parser<Lot> {
 
-    private static final Logger LOGGER = LogManager.getLogger(LotParser.class);
+    private static final Logger LOGGER = LogManager.getLogger(LotParserImpl.class);
 
     /**
      * Parses the JSON file by Path and

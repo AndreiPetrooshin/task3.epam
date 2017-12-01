@@ -4,6 +4,7 @@ import com.petrushin.task3.domain.Lot;
 import com.petrushin.task3.domain.State;
 import com.petrushin.task3.domain.User;
 import com.petrushin.task3.service.LotService;
+import com.petrushin.task3.service.PrintService;
 import com.petrushin.task3.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -80,11 +81,11 @@ public class LotServiceImpl implements LotService {
                 }
             }
             if (winner == null) {
-                System.out.println("No one bet for this lot: " + lot);
+                PrintService.print("No one bet for this lot: " + lot);
                 return;
             }
             winner.setCash(winner.getCash() - maxBet);
-            System.out.println("The " + winner
+            PrintService.print("The " + winner
                     + " won lot: " + lot.getId()
                     + " - price: " + maxBet);
         } finally {

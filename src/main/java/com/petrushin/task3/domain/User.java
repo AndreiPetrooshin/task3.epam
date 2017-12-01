@@ -38,7 +38,9 @@ public class User {
 
         User user = (User) o;
 
-        if (cash != null ? !cash.equals(user.cash) : user.cash != null) return false;
+        if (cash != null ? !cash.equals(user.cash) : user.cash != null){
+            return false;
+        }
         return name != null ? name.equals(user.name) : user.name == null;
     }
 

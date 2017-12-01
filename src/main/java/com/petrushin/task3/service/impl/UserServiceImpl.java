@@ -2,6 +2,7 @@ package com.petrushin.task3.service.impl;
 
 import com.petrushin.task3.domain.Lot;
 import com.petrushin.task3.domain.User;
+import com.petrushin.task3.service.PrintService;
 import com.petrushin.task3.service.UserService;
 
 import java.util.Map;
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService {
         if (lotNewPrice <= cashToSpend) {
             lot.setPrice(lotNewPrice);
             userMap.put(user, lotNewPrice);
-            System.out.println(user + " makes rise bet to "
+            PrintService.print(user + " makes rise bet to "
                     + lotNewPrice + " in lot: " + lot.getId());
         }
     }
