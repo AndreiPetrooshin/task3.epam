@@ -85,9 +85,8 @@ public class LotServiceImpl implements LotService {
                 return;
             }
             winner.setCash(winner.getCash() - maxBet);
-            PrintService.print("The " + winner
-                    + " won lot: " + lot.getId()
-                    + " - price: " + maxBet);
+            PrintService.print(winner + " won lot: " + lot.getId()
+                                + " - price: " + maxBet);
         } finally {
             lock.unlock();
         }

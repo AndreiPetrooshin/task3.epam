@@ -11,8 +11,8 @@ import java.util.List;
 
 public class Main {
 
-    private static final String PATH_TO_USER_JSON = "./src/main/resources/users.json";
-    private static final String PATH_TO_LOT_JSON = "./src/main/resources/lots.json";
+    private static final String PATH_TO_USER_JSON = "./users.json";
+    private static final String PATH_TO_LOT_JSON = "./lots.json";
 
     public static void main(String[] args) {
 
