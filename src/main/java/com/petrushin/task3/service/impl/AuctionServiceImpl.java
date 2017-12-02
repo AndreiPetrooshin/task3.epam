@@ -46,12 +46,12 @@ public class AuctionServiceImpl implements AuctionService {
 
         for (Lot lot : lots) {
             registrationUsersForLot(users, lot);
+
             LotRunnable lotRunnable = new LotRunnable(lot);
-            LotTerminate lotTerminate = new LotTerminate(lot);
-
             lotsStartExecutor.submit(lotRunnable);
-            lotsTerminateExecutor.submit(lotTerminate);
 
+            LotTerminate lotTerminate = new LotTerminate(lot);
+            lotsTerminateExecutor.submit(lotTerminate);
         }
         lotsStartExecutor.shutdown();
         lotsTerminateExecutor.shutdown();

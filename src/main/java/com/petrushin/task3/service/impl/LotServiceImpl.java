@@ -4,7 +4,7 @@ import com.petrushin.task3.domain.Lot;
 import com.petrushin.task3.domain.State;
 import com.petrushin.task3.domain.User;
 import com.petrushin.task3.service.LotService;
-import com.petrushin.task3.service.PrintService;
+import com.petrushin.task3.service.printer.PrintService;
 import com.petrushin.task3.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,6 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LotServiceImpl implements LotService {
 
     private static final Logger LOGGER = LogManager.getLogger(LotServiceImpl.class);
+    private static final int TIME_FOR_BET = 300;
 
     private Lock lock;
     private UserService userService;
@@ -37,19 +38,21 @@ public class LotServiceImpl implements LotService {
     @Override
     public void tradeLot(Lot lot) {
         while (lot.getState() == State.TRADING) {
-
             Set<User> users = lot.getUserSet();
-            try {
-                int timeoutForBet = 300;
-                TimeUnit.MILLISECONDS.sleep(timeoutForBet);
-            } catch (InterruptedException e) {
-                LOGGER.error("Interrupt Error in the trade lot cycle, lot: {}", lot);
-            }
+            waitForBet(lot);
             for (User user : users) {
                 userService.makeBetForLot(user, lot);
             }
         }
         identifyLotWinner(lot);
+    }
+
+    private void waitForBet(Lot lot) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(TIME_FOR_BET);
+        } catch (InterruptedException e) {
+            LOGGER.error("Interrupt Error in the trade lot cycle, lot: {}", lot);
+        }
     }
 
 

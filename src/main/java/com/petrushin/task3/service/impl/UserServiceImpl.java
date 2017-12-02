@@ -2,7 +2,7 @@ package com.petrushin.task3.service.impl;
 
 import com.petrushin.task3.domain.Lot;
 import com.petrushin.task3.domain.User;
-import com.petrushin.task3.service.PrintService;
+import com.petrushin.task3.service.printer.PrintService;
 import com.petrushin.task3.service.UserService;
 
 import java.util.Map;
@@ -21,18 +21,17 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void makeBetForLot(User user, Lot lot) {
-        int userCash = user.getCash();
-        int priceLot = lot.getPrice();
-        int lotNewPrice = (int) (priceLot * BET_STEP);
         Map<User, Integer> userMap = lot.getUserMap();
 
+        int priceLot = lot.getPrice();
         int price = userMap.get(user);
-
         if (price == priceLot) {
             return;
         }
 
+        int userCash = user.getCash();
         int cashToSpend = (int) (userCash * PERCENTAGE_TO_BUY);
+        int lotNewPrice = (int) (priceLot * BET_STEP);
         if (lotNewPrice <= cashToSpend) {
             lot.setPrice(lotNewPrice);
             userMap.put(user, lotNewPrice);
